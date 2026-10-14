@@ -1,0 +1,12 @@
+{
+  "name": "hcr-modmenu-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Clean-room browser hill-climbing game to demo and test an in-game mod menu.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start": "node serve.mjs 8099"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Hill Dash — Mod Menu Test</title>
+  <meta name="description" content="A clean-room browser hill-climbing game built to demo an in-game mod menu. Fan project, not affiliated with any publisher." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚙</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">HILL&nbsp;DASH <small>mod-menu test</small></div>
+    <nav class="tabs">
+      <button class="tab" data-nav="home">Home</button>
+      <button class="tab" data-nav="vehicles">Vehicles</button>
+      <button class="tab" data-nav="garage">Garage</button>
+      <button class="tab" data-nav="stages">Stages</button>
+      <button class="tab tab-play" id="navPlay">▶ Play</button>
+    </nav>
+    <div class="wallet">
+      <span class="coin">🪙 <b id="coinHud">0</b></span>
+      <span class="gem">💎 <b id="gemHud">0</b></span>
+    </div>
+  </header>
+
+  <main class="stage">
+    <!-- HOME -->
+    <section class="screen active" id="screen-home">
+      <div class="hero">
+        <h1>Hill&nbsp;Dash</h1>
+        <p class="muted">A tiny clean-room climber to test an in-game mod menu. Press <kbd>Insert</kbd> or tap <b>MOD&nbsp;MENU</b> any time.</p>
+        <div class="hero-cards">
+          <div class="card"><span class="muted">Vehicle</span><h3 id="homeVehicle">—</h3><button class="btn btn-ghost" data-nav="vehicles">Change</button></div>
+          <div class="card"><span class="muted">Stage</span><h3 id="homeStage">—</h3><button class="btn btn-ghost" data-nav="stages">Change</button></div>
+        </div>
+        <button class="btn btn-accent btn-xl" id="homePlay">▶ Drive</button>
+      </div>
+    </section>
+
+    <!-- VEHICLES -->
+    <section class="screen" id="screen-vehicles">
+      <h2>Vehicles</h2>
+      <div class="grid" id="vehicleList"></div>
+    </section>
+
+    <!-- GARAGE -->
+    <section class="screen" id="screen-garage">
+      <h2>Garage — <span id="garageTitle"></span></h2>
+      <div class="grid" id="garageParts"></div>
+    </section>
+
+    <!-- STAGES -->
+    <section class="screen" id="screen-stages">
+      <h2>Stages</h2>
+      <div class="grid" id="stageList"></div>
+    </section>
+
+    <!-- DRIVE -->
+    <div class="game-wrap" id="gameWrap">
+      <canvas id="game"></canvas>
+      <div class="drive-hud" id="driveHud">
+        <div class="hud-left">
+          <div class="hud-stat"><span>DIST</span><b id="hudDist">0 m</b></div>
+          <div class="hud-stat"><span>🪙</span><b id="hudCoins">0</b></div>
+          <div class="hud-stat"><span>💎</span><b id="hudGems">0</b></div>
+          <div class="hud-stat"><span>FLIPS</span><b id="hudFlips">0</b></div>
+        </div>
+        <div class="hud-fuel"><div class="hud-fuel-bar" id="hudFuelBar"></div><span id="hudState"></span></div>
+        <div class="hud-right"><button class="btn btn-ghost" id="btnExitDrive">Exit</button><button class="btn btn-ghost" id="btnRestart">↻</button></div>
+      </div>
+      <div class="pad pad-left" id="padLeft"><span>◀ BRAKE</span></div>
+      <div class="pad pad-right" id="padRight"><span>GAS ▶</span></div>
+    </div>
+  </main>
+
+  <!-- MOD MENU -->
+  <button class="fab" id="fab">MOD&nbsp;MENU</button>
+  <aside class="modmenu" id="modmenu"></aside>
+
+  <!-- RESULT -->
+  <div class="modal" id="resultModal">
+    <div class="modal-box">
+      <h2>Run over</h2>
+      <div id="resultBody"></div>
+      <div class="row">
+        <button class="btn btn-accent" id="resultAgain">Drive again</button>
+        <button class="btn btn-ghost" id="resultClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
